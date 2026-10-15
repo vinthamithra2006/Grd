@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 320px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2d3436;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Common input styles */
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        /* Ovvorru input-kum thanithani colors (Left border & subtle background tint) */
+        #mark1 { border: 2px solid #ff7675; background-color: #fff5f5; }
+        #mark2 { border: 2px solid #fdcb6e; background-color: #fffdf0; }
+        #mark3 { border: 2px solid #55efc4; background-color: #f0fffb; }
+        #mark4 { border: 2px solid #74b9ff; background-color: #f0f7ff; }
+        #mark5 { border: 2px solid #a29bfe; background-color: #f5f3ff; }
+        #mark6 { border: 2px solid #ff9ff3; background-color: #fff0fc; }
+
+        /* Focus pannum pothu glow effect */
+        input[type="number"]:focus {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+        }
+
+        button {
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #74b9ff;
+        }
+
+        #result {
+            margin-top: 20px;
+            color: #2d3436;
+            font-size: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Grade Calculator</h2>
+        
+        <input type="number" placeholder="Enter Mark 1" id="mark1">
+        <input type="number" placeholder="Enter Mark 2" id="mark2">
+        <input type="number" placeholder="Enter Mark 3" id="mark3">
+        <input type="number" placeholder="Enter Mark 4" id="mark4">
+        <input type="number" placeholder="Enter Mark 5" id="mark5">
+        <input type="number" placeholder="Enter Mark 6" id="mark6">
+
+        <button onclick="Grade()">Calculate</button>
+
+        <h3 id="result"></h3>
+    </div>
+
+<script>
+function Grade() {
+    var m1 = Number(document.getElementById("mark1").value);
+    var m2 = Number(document.getElementById("mark2").value);
+    var m3 = Number(document.getElementById("mark3").value);
+    var m4 = Number(document.getElementById("mark4").value);
+    var m5 = Number(document.getElementById("mark5").value);
+    var m6 = Number(document.getElementById("mark6").value);
+
+    var total = m1 + m2 + m3 + m4 + m5 + m6;
+    var avg = total / 6;
+
+    var grade = "";
+    if (avg >= 90) {
+        grade = "A+";
+    } else if (avg >= 75) {
+        grade = "A";
+    } else if (avg >= 50) {
+        grade = "B";
+    } else {
+        grade = "Fail";
+    }
+
+    document.getElementById("result").innerText = 
+        "Total: " + total + " | Avg: " + avg.toFixed(2) + " | Grade: " + grade;
+}
+</script>
+
+</body>
+</html>
